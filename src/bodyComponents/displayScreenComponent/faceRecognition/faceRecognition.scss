@@ -1,0 +1,24 @@
+.image-container {
+    position: absolute;
+    margin-top: 2px;
+}
+
+
+.bounding-box {
+    position: absolute;
+    box-shadow: 0 0 0 3px #149df2 inset;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.image {
+
+    @media screen and (max-width: 900px) {
+        width: 320px;
+    }
+
+    @media screen and (max-width: 720px) {
+        width: 300px;
+    }
+}

@@ -1,0 +1,42 @@
+.screen-container {
+    display: flex;
+    flex-direction: row;
+    width: 77%;
+    border:  2px solid #ffce00;
+    border-radius: 7px;
+    margin: auto;
+    padding: 20px;
+    background-color:rgb(18, 18, 19);
+
+    @media screen and (max-width: 850px) {
+        flex-direction: column;
+    }
+}
+
+.face-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 55%;
+    height: 380px;
+    border:  2px solid rgba($color: #ffce00, $alpha: 0.7);
+    border-radius: 5px;
+
+    @media screen and (max-width: 850px) {
+        width: 95%;
+        margin: auto;
+        height: 380px;
+    }
+}
+
+.demographics-container {
+    width: 45%;
+    border-top: 2px solid rgba($color: #ffce00, $alpha: 0.7);
+    border-bottom: 2px solid rgba($color: #ffce00, $alpha: 0.7);
+    border-radius: 5px;
+
+    @media screen and (max-width: 850px) {
+        width: 100%;
+        margin: auto;
+    }
+}

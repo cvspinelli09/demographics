@@ -1,0 +1,20 @@
+.header-container {
+    // display: flex;
+    // width: 90%;
+    // margin: 40px auto;
+    // border: 1px solid black;
+
+    width: 80%;
+    margin: 20px auto;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+
+    @media screen and (max-width: 670px) {
+      display: flex;
+      width: 100%;
+      padding: 0 20px;
+      margin: auto;
+      flex-wrap: wrap;
+    } 
+}
