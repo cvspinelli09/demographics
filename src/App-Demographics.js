@@ -19,7 +19,17 @@ class App extends React.Component {
     this.state = {
       input: "",
       imageUrl: "",
-      boxes: []
+      boxes: [],
+      demographics: [
+        {
+          gender: "",
+          probGender: "",
+          age: "",
+          probAge: "",
+          multiCulture: "",
+          probMultiCulture: ""
+        }
+      ]
     };
   }
 
@@ -38,36 +48,6 @@ class App extends React.Component {
     });
   };
 
-  calculateDemographics = (data) => {
-    return data.outputs[0].data.regions.map((demo) => {
-      const demographicsResults = demo.data;
-      const age = demographicsResults.concepts[0].name;
-      console.log(age);
-      const probAge = demographicsResults.concepts[0].value;
-      console.log(probAge);
-      const gender = demographicsResults.concepts[20].name;
-      console.log(gender);
-      const probGender = demographicsResults.concepts[20].value;
-      console.log(probGender);
-      const multiCulture = demographicsResults.concepts[22].name;
-      console.log(multiCulture);
-      const probMultiCulture = demographicsResults.concepts[22].value;
-      console.log(probMultiCulture);
-      const multiCulture2 = demographicsResults.concepts[23].name;
-      console.log(multiCulture2);
-      const probMultiCulture2 = demographicsResults.concepts[23].value;
-      console.log(probMultiCulture2);
-      return {
-        age: age,
-        probAge: probAge,
-        gender: gender,
-        probGender: probGender,
-        multiCulture: multiCulture,
-        probMultiCulture: probMultiCulture,
-      };
-    });
-  };
-
   displayFaceBoxes = (boxes) => {
     this.setState({ boxes: boxes });
   };
@@ -76,20 +56,49 @@ class App extends React.Component {
     this.setState({ input: event.target.value });
   };
 
+  calculateDemographics = (data) => {
+    return data.outputs[0].data.regions.map((demo) => {
+      const demographicsResults = demo.data;
+      const gender = demographicsResults.concepts[20].name;
+      const probGender = demographicsResults.concepts[20].value;
+      const age = demographicsResults.concepts[0].name;
+      const probAge = demographicsResults.concepts[0].value;
+      const multiCulture = demographicsResults.concepts[22].name;
+      const probMultiCulture = demographicsResults.concepts[22].value;
+      return {
+        gender,
+        probGender,
+        age,
+        probAge,
+        multiCulture,
+        probMultiCulture,
+      };
+    });
+  };
+
+  displayDemographics = (demographics) => {
+    this.setState({ demographics: demographics })
+  }
+
   onButtomSubmit = () => {
     this.setState({ imageUrl: this.state.input });
     app.models
       .predict(Clarifai.DEMOGRAPHICS_MODEL, this.state.input)
-      .then((response) =>
-        this.calculateDemographics(response)
-      )
       // .then((response) =>
       //   this.displayFaceBoxes(this.calculateFaceLocations(response))
+      // )
+      .then((response) =>
+        this.displayDemographics(this.calculateDemographics(response))
+      )
+      // .then((response) =>
+      //   console.log(response.outputs[0].data.regions[0].data.concepts[0].name)
       // )
       .catch((err) => console.log(err));
   };
 
   render() {
+    const { boxes, imageUrl, demographics } = this.state;
+    // console.log(demographics);
     return (
       <div className="App">
         <Header />
@@ -97,9 +106,9 @@ class App extends React.Component {
         <DisplayScreen
           onInputChange={this.onInputChange}
           onButtomSubmit={this.onButtomSubmit}
-          boxes={this.state.boxes}
-          imageUrl={this.state.imageUrl}
-          calculateDemographics={this.calculateDemographics}
+          boxes={boxes}
+          imageUrl={imageUrl}
+          demographics={demographics}
         />
       </div>
     );

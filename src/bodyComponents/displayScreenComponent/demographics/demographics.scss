@@ -5,7 +5,7 @@
 
 .grid {
     display: grid;
-    grid-template-columns: 65% 1fr;
+    grid-template-columns: 60% 1fr;
     grid-gap: 0.4em;
     grid-auto-rows: minmax(50px, auto);
     font-size: 1.1em;
@@ -32,7 +32,7 @@
 .response {
     font-family: 'Chivo', sans-serif;
     font-weight: 500; 
-    background:  rgba(70, 166, 214, 0.9);
+    background:  rgba(134, 202, 236, 0.9);
     color: black;
     
 }

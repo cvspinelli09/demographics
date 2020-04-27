@@ -11,24 +11,33 @@ const DisplayScreen = ({
   onButtomSubmit,
   imageUrl,
   boxes,
-  calculateDemographics
-}) => (
-  <div>
-    <div className="">
-      <ImageLinkForm
-        onInputChange={onInputChange}
-        onButtomSubmit={onButtomSubmit}
-      />
-    </div>
-    <div className="screen-container">
-      <div className="face-container">
-        <FaceRecognition imageUrl={imageUrl} boxes={boxes} />
+  displayAge,
+  calculateDemographics,
+  demographics
+}) => {
+  // console.log(demographics)
+  return (
+    <div>
+      <div className="">
+        <ImageLinkForm
+          onInputChange={onInputChange}
+          onButtomSubmit={onButtomSubmit}
+        />
       </div>
-      <div className="demographics-container">
-        <Demographics calculateDemographics={calculateDemographics} />
+      <div className="screen-container">
+        <div className="face-container">
+          <FaceRecognition imageUrl={imageUrl} boxes={boxes} />
+        </div>
+        <div className="demographics-container">
+          <Demographics 
+            displayAge={displayAge}
+            calculateDemographics={calculateDemographics}
+            demographics={demographics}
+          />
+        </div>
       </div>
     </div>
-  </div>
-);
+  );
+};
 
 export default DisplayScreen;
