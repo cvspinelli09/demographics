@@ -17,4 +17,8 @@
     font-weight: 200;
     color: whitesmoke;
     line-height: 1.5em;
+
+    @media screen and (max-width: 670px) {
+        font-weight: 700px;
+    }
 }
