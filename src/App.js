@@ -50,11 +50,11 @@ class App extends React.Component {
     this.setState({ imageUrl: this.state.input });
     app.models
       .predict(Clarifai.DEMOGRAPHICS_MODEL, this.state.input)
-      // .then(
-      //   function(response) {
-      //     console.log(response.outputs[0].data.regions[0].data.concepts);
-      //   }
-      // )
+      .then(
+        function(response) {
+          console.log(response.outputs[0].data.regions[0].data.concepts);
+        }
+      )
       .then((response) =>
         this.displayFaceBox(this.calculateFaceLocation(response))
       )

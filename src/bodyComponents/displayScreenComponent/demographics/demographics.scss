@@ -5,20 +5,20 @@
 
 .grid {
     display: grid;
-    grid-template-columns: 60% 1fr;
+    grid-template-columns: 70% 1fr;
     grid-gap: 0.4em;
     grid-auto-rows: minmax(50px, auto);
     font-size: 1.1em;
     line-height: 1.25em;
 }
 
-.grid div:nth-child(even) {
-    // background-color: rgb(160, 214, 245);
-    align-self: end;
-}
-.grid div:nth-child(odd) {
-    // background-color: #ddd;
-    align-self: end;
+.grid-2 {
+    display: grid;
+    grid-template-columns: 50% 1fr;
+    grid-gap: 0.4em;
+    grid-auto-rows: minmax(50px, auto);
+    font-size: 1.1em;
+    line-height: 1.25em;
 }
 
 .call {
@@ -34,6 +34,7 @@
     font-weight: 500; 
     background:  rgba(134, 202, 236, 0.9);
     color: black;
+    padding-left: 10px;
     
 }
 

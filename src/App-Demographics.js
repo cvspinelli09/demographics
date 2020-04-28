@@ -84,15 +84,9 @@ class App extends React.Component {
     this.setState({ imageUrl: this.state.input });
     app.models
       .predict(Clarifai.DEMOGRAPHICS_MODEL, this.state.input)
-      // .then((response) =>
-      //   this.displayFaceBoxes(this.calculateFaceLocations(response))
-      // )
       .then((response) =>
         this.displayDemographics(this.calculateDemographics(response))
       )
-      // .then((response) =>
-      //   console.log(response.outputs[0].data.regions[0].data.concepts[0].name)
-      // )
       .catch((err) => console.log(err));
   };
 
