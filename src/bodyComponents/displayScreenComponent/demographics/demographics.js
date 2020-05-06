@@ -3,10 +3,6 @@ import React from "react";
 import "./demographics.scss";
 
 const Demographics = ({ demographics }) => {
-  console.log(demographics);
-  if (demographics.length > 1) {
-    
-  }
   return (
     <div className={demographics.length > 1 ? "grid-2" : "grid"}>
       {demographics.map((demographics) => (
